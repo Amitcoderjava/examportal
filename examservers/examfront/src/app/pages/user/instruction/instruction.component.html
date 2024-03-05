@@ -1,0 +1,61 @@
+<div class="bootstrap-wapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <mat-card>
+
+                   <mat-card-header>
+                        <!-- heading -->
+                        <mat-card-title>
+                            Read all the instruction carefully and start the Quiz on time
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            One step to go Start the Quiz
+                        </mat-card-subtitle>
+                   </mat-card-header>
+                   <mat-card-content class="mt20">
+
+                    <h1>
+                        {{quiz.title}}
+                    </h1>
+                    <p>{{quiz.discription}}</p>
+
+                    <mat-divider></mat-divider>
+                    <br />
+                    <h1>Important Instruction</h1>
+                    
+                    <ul>
+                        <li>This quiz only for Prectice Purpose</li>
+                        <li>This quiz submited on <b>{{quiz.noOfQuestion}} *2  minutes</b></li>
+                        <li>You attempt the quiz many times</li>
+                        <li>In this quiz contains {{quiz.noOfQuestion}} number of question</li>
+                        <li>Each question have <b>{{quiz.maxmarks}}/{{ quiz.noOfQuestion}} marks.</b> No negative marking in this quiz  </li>
+                        <li>All question are MCQ type</li>
+                    </ul>
+                    <mat-divider></mat-divider>
+                    <br />
+                    <h1> Attempting Quiz</h1>
+
+                    <ul>
+                        <li>click <b>Start</b> button to start the quiz.</li>
+                        <li>The time was start that moment when you click the start.</li>
+                        <li>you are resume the test. when any inttruption on the quiz</li>
+                        <li>If you complete the exam you can click <b>Submit</b> button to submit the exam.</li>
+                        <li>If you are not click submit button in between the time , then automatically submitted the exam.</li>
+                    </ul>
+                   </mat-card-content>
+                   <mat-card-actions class="text-center mt20">
+
+                    <button (click)="startquiz()" mat-raised-button color="accent">Start</button>
+
+                   </mat-card-actions>
+
+                </mat-card>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+             <!-- instruction -->
+            </div>
+            <div class="col-md-8">
+                  <!-- question -->
+                  <ng-container *ngIf="question" class="mt20">
+
+                     <h1>On going Quiz {{question[0].quiz.title}}</h1>
+
+                  </ng-container>
+                  <mat-card *ngFor="let q of question ; let i=index" class="mt20">
+                    <mat-card-content>
+                        <p>
+                            <b>Q {{i+1}}></b>
+                            <span class="ml20" [innerHTML]="q.content"></span>
+                        </p>
+                    </mat-card-content>
+                    <mat-divider></mat-divider>
+                    <br />              
+                        <mat-radio-group
+                        class="example-radio-group"
+                             >    
+                    <div class="row">         
+                        <div class="col-md-6">            
+                            <mat-radio-button value="q.option1">{{q.option1}}</mat-radio-button>
+                        </div>
+                        <div class="col-md-6">               
+                            <mat-radio-button value="q.option2">{{q.option2}}</mat-radio-button>     
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-radio-button value="q.option3">{{q.option3}}</mat-radio-button>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-radio-button value="q.option4">{{q.option4}}</mat-radio-button>
+                           
+                        </div>
+                    </div>
+                </mat-radio-group> 
+                  </mat-card>
+         
+                  <div class="container texxt-center mt20 mb20">
+                    <button (click)="submitquiz()" mat-raised-button color="primary">
+                        Submit
+                    </button>
+                  </div>
+            </div>
+            <div class="col-md-2">
+                 <!-- timmer -->
+                 <mat-card style="margin-top: 50px;">
+                    <mat-card-header>
+                        <mat-card-title><b>Progress</b></mat-card-title>
+                        <mat-card-subtitle>Quiz automatically submit when the time reach to 00:00.Please complete the quiz on time.</mat-card-subtitle>
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h1 class="text-centre">{{getformatedtime()}}</h1>
+                        <mat-spinner mode="determinate" class="mt10" [value]="(timer/(this.question.length *2*60))*100" style="margin: auto;"></mat-spinner>
+                    </mat-card-content>
+                 </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- after completed the quiz shows the result -->
+<div class="bootstrap-wrapper" *ngIf="isSubmit">
+    <div class="container">
+        <div class="row mt20">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title><b>Quiz Result </b></mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mt20">
+                        <h1>Marks Obtained : {{gotmarks}}</h1>
+                        <h1>Correct Answer : {{correctAnswer}}</h1>
+                        <h1>Attempt Questions : {{attempted}}</h1>
+                    </mat-card-content>
+                    <mat-card-actions class="text-centre">
+
+                       <button  class="mr20"mat-raised-button color="primary">Print</button>
+
+                       <button [routerLink]="'/userdashboard/0'" mat-raised-button color="primary">Home</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
